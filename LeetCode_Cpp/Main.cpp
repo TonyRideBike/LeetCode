@@ -1,13 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "sqrtx.h"
+#include "JewelsAndStones.h"
 
 using namespace std;
 
 int main() {
 	
-	Sqrtx problem;
+	JewelsAndStones problem;
 	problem.run();
 	system("pause");
 	return 0;
