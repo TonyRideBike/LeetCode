@@ -1,7 +1,10 @@
 #include "JewelsAndStones.h"
 #include <fstream>
+#include <iostream>
 
-using std::string;
+using namespace std;
+
+/* https://leetcode.com/problems/jewels-and-stones/description/ */
 
 JewelsAndStones::JewelsAndStones()
 {
@@ -14,11 +17,11 @@ JewelsAndStones::~JewelsAndStones()
 
 class Solution {
 public:
-	int numJewelsInStones(string J, string S) {
+	int numJewelsInStones(std::string J, std::string S) {
 		int count = 0;
-		for (int i = 0; i < S.size(); i++) {
-			if (J.find(S[i]) < 0) {
-				count++;
+		for (char stone : S) {
+			for (char jewel : J) {
+				if (jewel == stone) count++;
 			}
 		}
 		return count;
@@ -34,12 +37,13 @@ int JewelsAndStones::run() {
 	}
 
 	Solution solution;
-	string j, s;
-	
-	while (j != "END") {
-		fprintf(out, "%d\n", solution.numJewelsInStones(j, s));
-		fscanf(in, "%s %s", j, s);
-	}
+	std::string j, s;
+	char jewel[50], stone[50];
+	fscanf(in, "%s %s", jewel, stone);
+	j = jewel;
+	s = stone;
+	fprintf(out, "%d\n", solution.numJewelsInStones(j, s));  
+
 	fclose(in);
 	fclose(out);
 	return 0;
